@@ -1,5 +1,7 @@
 import express from 'express';
+import * as bodyParser from 'body-parser';
 import authRoute from './routes/auth';
+import imageRoute from './routes/image';
 import path from 'path'
 
 class App {
@@ -19,11 +21,13 @@ function createServer() {
   const server = new App(app);
 
   // Middlewares
+  app.use(bodyParser.urlencoded({extended: false}))
   app.use(express.json());
   app.use(express.static(path.resolve(`./public`)))
 
   // Routes
   app.use('/api/auth', authRoute);
+  app.use('/api/tool', imageRoute);
 
   return server;
 }
