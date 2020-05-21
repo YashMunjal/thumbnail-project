@@ -35,7 +35,6 @@ export const validateRequestAuth = (
   res: Response,
   next: NextFunction,
 ) => {
-  console.log(req.cookies)
   if (!req.cookies.token) return res.status(400).json({ error: 'Token Missing' });
   const token = req.headers.authorization || req.cookies.token;
   const verify = verifyToken(token)

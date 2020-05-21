@@ -15,7 +15,7 @@ export const handleDownloadImageFromNetwork = async(req: Request, res: Response)
 
     await downloadImageFromNetwork({imageUrl, fileName})
     const file: Buffer = fs.readFileSync(path.resolve(__dirname, `../../../images/${fileName}`))
-    await resizeImage(file, {height: 300, width: 300, quality: 100}, res);
+    await resizeImage(file, {height: 50, width: 50, quality: 100}, res);
 
   }catch(err){
     logger.error(err);
