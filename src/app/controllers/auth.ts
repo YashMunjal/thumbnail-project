@@ -8,7 +8,7 @@ export const handleLoginRequest = (req: Request, res: Response): Response => {
   try {
     if (!req.body) return res.status(400).json({ errro: 'Invalid Request' });
     const { username, password } = req.body;
-    if (!username || !password) res.status(400).json({ error: 'username or password missing' });
+    if (!username || !password) return res.status(400).json({ error: 'username or password missing' });
 
     // Todo: Do stuff with username and password...
     const payload = {
