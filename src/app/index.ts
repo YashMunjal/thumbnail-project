@@ -1,5 +1,6 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import authRoute from './routes/auth';
 import imageRoute from './routes/image';
 import path from 'path'
@@ -23,6 +24,7 @@ function createServer() {
   // Middlewares
   app.use(bodyParser.urlencoded({extended: false}))
   app.use(express.json());
+  app.use(cookieParser())
   app.use(express.static(path.resolve(`./public`)))
 
   // Routes

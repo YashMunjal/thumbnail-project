@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
   <!-- Custom Css -->
   <link rel="stylesheet" href="./css/style.css" />
@@ -10,13 +12,13 @@
   <title>Project_01</title>
 </head>
 
-<body>
+<body class="container mt-3">
   <form method="POST" action="/api/tool/resize-image">
-    <div>
+    <div class="form-group">
       <label>Url</label>
-      <input type="url" name="imageUrl" required />
+      <input placeholder="Please enter image url here" class="form-control" type="url" name="imageUrl" required />
     </div>
-    <button type="submit">Download</button>
+    <button class="btn btn-success" type="submit">Download</button>
   </form>
   <!-- Js -->
   <script src="js/script.js"></script>

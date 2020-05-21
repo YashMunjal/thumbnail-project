@@ -16,7 +16,7 @@ export const handleLoginRequest = (req: Request, res: Response): Response => {
       username,
     };
     const token = generateToken(payload);
-    return res.status(200).json({ status: 'success', token });
+    return res.status(200).cookie('token',token).json({ status: 'success', token });
   } catch (err) {
     logger.error(err);
   }

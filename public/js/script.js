@@ -1,4 +1,5 @@
 const loginForm = document.getElementById('login-form');
+const alertBox = document.getElementById('alert-box');
 
 const usernameInputField = document.getElementById('username-input-field');
 const passwordInputField = document.getElementById('password-input-field');
@@ -22,15 +23,14 @@ const handleLoginFormSubmit = async (e) => {
 
     const response = await (await fetch('/api/auth/login', loginApiOptions)).json();
     if (response.status === "success") {
-      alert('Login Sucessfull')
-      //* Note: Login Sucess.... redirect user 
-    }
-    else {
-      alert(response.error)
+      window.localStorage.setItem('token', response.token);
+      window.location.href = '/app.html';
+
     }
 
   } catch (err) {
     // Handle Err
+    alertBox.innerHTML = `<div class="aler alert-danger">${response.error}</div>`
   }
 }
 

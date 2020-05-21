@@ -9,14 +9,6 @@ interface Payload{
   username: string;
 }
 
-export const validateRequestAuth = (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
-  if (!req.headers.authorization) return res.status(400).json({ error: 'Token Missing' });
-  return next();
-};
 
 export const generateToken = (payload: Payload): string| Error => {
   try {
@@ -36,4 +28,17 @@ export const verifyToken = (token: string): boolean => {
     logger.error(err);
   }
   return false;
+};
+
+export const validateRequestAuth = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  console.log(req.cookies)
+  if (!req.cookies.token) return res.status(400).json({ error: 'Token Missing' });
+  const token = req.headers.authorization || req.cookies.token;
+  const verify = verifyToken(token)
+  if(!verify) return res.status(403).json({error: 'Invalid Token'})
+  return next();
 };
