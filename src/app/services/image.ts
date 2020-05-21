@@ -1,7 +1,7 @@
 // var http = require("http"),
 //   Stream = require("stream").Transform,
 //   fs = require("fs");
-import http from 'http';
+import https from 'https';
 import {Response} from 'express';
 import {Transform as Stream} from 'stream'
 import fs from 'fs'
@@ -23,8 +23,8 @@ import sharp from 'sharp'
 export const downloadImageFromNetwork = async(meta: Meta): Promise<void> => {
   try{
     return new Promise((resolve, reject) => {
-      http
-      .request(meta.imageUrl, function(response: http.IncomingMessage) {
+      https
+      .request(meta.imageUrl, function(response) {
         var data: Stream = new Stream();
     
         response.on("data", function(chunk) {
