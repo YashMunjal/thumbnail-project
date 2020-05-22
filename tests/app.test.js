@@ -25,8 +25,9 @@ describe('Image Processing', () => {
 
   it(`Should return resized image`, async () => {
     const payload = {
-      imageUrl: 'https://res.cloudinary.com/practicaldev/image/fetch/s--J6qf2Ctw--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/gd97g4kdyk1bpdeyfqst.png'
+      imageUrl: 'http://www.google.com/images/srpr/logo11w.png'
     }
-    const response = await request(server).post('api/tool/resize-image').send(payload);
+    const response = await request(server).post('/api/tool/resize-image').send(payload);
+    response.header['content-type']
   })
 })
