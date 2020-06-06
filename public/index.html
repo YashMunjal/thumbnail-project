@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Custom Css -->
+  <link rel="stylesheet" href="./css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project_01</title>
+</head>
+
+<body>
+  <!-- Js -->
+  <script>
+    window.onload = function () {
+      const token = window.localStorage.getItem('token');
+      if (token) window.location.href = '/app.html'
+      else window.location.href = '/login.html'
+    }
+  </script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
